@@ -48,7 +48,7 @@
  			console.log("Peso Inválido");
  			pesoEhValido = false;
  			tdImc.textContent = "Peso Inválido"
- 			paciente.style.backgroundColor = "lightcoral";
+ 			paciente.classList.add("paciente-invalido");
  		}
 
 
@@ -56,7 +56,8 @@
 
  			console.log("Altura Inválida")
  			alturaEhValida = false;
- 			tdImc.textContent="Altura Inválida" 
+ 			tdImc.textContent="Altura Inválida"
+ 			paciente.classList.add("paciente-invalido");
  		}
 
 
