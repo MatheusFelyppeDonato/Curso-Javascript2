@@ -69,6 +69,26 @@
  		}
  		}
  		
+ 		/* titulo.addEventListener("click", function(){
+ 			console.log("Olha, posso chamar uma função anonima.");
+
+ 		});
+
+
+ 		function mostraMensagem(){
+ 			console.log("Olá, eu fui clicado");
+
+
+ 		} */
+ 		var botaoAdicionar = document.querySelectorAll("#adicionar-paciente");
+ 		botaoAdicionar.addEventListener("click", function() {
+ 			console.log("Oi, cloquei no botão");
+ 		});
+
+ 		titulo.addEventListener("click", function(){ 
+ 		});
+
+
  		
 
  		 
