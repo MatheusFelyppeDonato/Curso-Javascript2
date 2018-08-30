@@ -18,18 +18,26 @@ var botaoAdicionar = document.querySelector("#adicionar-paciente");
  			var form = document.querySelector("#form-adiciona");
  			// extraindo informações do paciente do form
  				var paciente = obtemPacienteDoFormulario(form);
-
- 				console.log(paciente);
+ 			
 
  			// criando a tr do paciente
  			var pacienteTr = montaTr(paciente);
+
+ 			var erro = validaPaciente(paciente);
+ 			
+
+ 			if(erro.length > 0){
+ 				var mensagemErro = document.querySelector("#mensagem-erro");
+ 				mensagemErro.textContent = erros;
+ 				return;
+ 			}
  			
  			// adicionando o paciente na tabela
  			var tabela = document.querySelector("#tabela-pacientes");
 
  			tabela.appendChild(pacienteTr);
 
-
+ 			form.reset();
  		});
 
  		function obtemPacienteDoFormulario(form) {
@@ -47,31 +55,39 @@ var botaoAdicionar = document.querySelector("#adicionar-paciente");
 
  			function montaTr(paciente){
  				 var pacienteTr = document.createElement("tr");
+ 				 pacienteTr.classList.add("paciente");
 
- 			 var nomeTd = document.createElement("td");
- 			var pesoTd = document.createElement("td");
- 			var alturaTd = document.createElement("td");
- 			var gorduraTd = document.createElement("td");
- 			var imcTd = document.createElement("td");
-			
-					
 
- 			nomeTd.textContent = paciente.nome;
- 			pesoTd.textContent = paciente.peso;
- 			alturaTd.textContent = paciente.altura;
- 			gorduraTd.textContent = paciente.gordura;
- 			imcTd.textContent = paciente.imc;
-
- 			pacienteTr.appendChild(nomeTd);
- 			pacienteTr.appendChild(pesoTd);
- 			pacienteTr.appendChild(alturaTd);
- 			pacienteTr.appendChild(gorduraTd);
- 			pacienteTr.appendChild(imcTd);
+ 			
+ 			pacienteTr.appendChild(montaTd(paciente.nome, "info-nome"));
+ 			pacienteTr.appendChild(montaTd(paciente.peso, "info-peso"));
+ 			pacienteTr.appendChild(montaTd(paciente.altura, "info-altura"));
+ 			pacienteTr.appendChild(montaTd(paciente.gordura, "info-gordura"));
+ 			pacienteTr.appendChild(montaTd(paciente.imc, "info-imc"));
  			
 
 
  				 return pacienteTr;
 
+
+ 			}
+
+ 			function montaTd(dado, classe){
+ 				var td = document.createElement("td");
+ 				td.textContent = dado; 
+ 				td.classList.add(classe);
+ 				return td;
+ 			}
+
+ 			function validaPaciente (paciente){
+
+ 				var erros = [];
+
+ 				if (!validaPeso(paciente.peso))	erros.push("Peso é inválido");
+ 				if (!validaAltura(paciente.altura)) erros.push("Altura é inválida");
+
+	
+ 				return erros;
 
  			}
 

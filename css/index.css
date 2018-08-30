@@ -132,8 +132,23 @@ button[disabled=disabled], button:disabled {
 .campo-invalido{
 	border: 1px solid red;
 }
-
+	function obtemPacienteDoFormulario(form) {
+				var paciente = { 
+					nome: form.nome.value,
+					peso: form.peso.value,
+					altura: form.altura.value,
+					gordura: form.gordura.value,
+					imc: calculaimc(form.peso.value, form.altura,value)
+ 				}
+ 				return paciente;
+ 			}
 .paciente-invalido{
 
 	background-color: lightcoral; 
+}
+
+
+#mensagem-erro{
+
+	color:red; 
 }
